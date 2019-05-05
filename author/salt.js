@@ -1,5 +1,4 @@
 const { Store } = require('@convenience/store')
-const Path = require('path')
 
 const authors = [
   {
@@ -12,17 +11,13 @@ const authors = [
   }
 ]
 
-const store = new Store(Path.join(__dirname, 'data'))
+const store = new Store()
 if (!store.existsBucket('authors')) {
   store.createBucket('authors', authors[0])
 }
 
 for (const author of authors) {
-  store.create('authors', author)
-}
-
-const results = store.getItems('authors')
-console.log(results.count)
-for (const result of results.items) {
-  console.log('item', result)
+  if (!store.exists('authors', author.id)) {
+    store.create('authors', author)
+  }
 }

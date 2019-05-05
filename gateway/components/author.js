@@ -1,45 +1,57 @@
 
-const GraphQLComponent = require('graphql-component');
+const GraphQLComponent = require('graphql-component')
 
 class AuthorComponent extends GraphQLComponent {
-  constructor({ broker }) {
-
+  constructor ({ broker }) {
     const types = `
       # An author.
       type Author {
         id: ID!
         # The author name.
         name: String,
-        # The author email.
-        email: String
+      }
+      type Authors {
+        total: Int,
+        authors: [Author]
       }
       type Query {
-        # Seach for an author by id.
-        author(id: ID!, version: String) : Author
+        # Search for an author by id.
+        author(id: ID!) : Author,
+        # List authors.
+        authors(offset: Int, take: Int) : Authors
       }
       type Mutation {
-        # Create a new book.
-        author(name: String!) : Author
+        # Create a new author.
+        createAuthor(id: ID, name: String!) : Author
+        # Update existing author
+        updateAuthor(id: ID!, name: String!) : Author
       }
-    `;
+    `
 
     const resolvers = {
       Query: {
-        author(_, { id }, { call }) {
-          return this._broker.call('author.query', { id });
+        author (_, { id }, { call }) {
+          return this._broker.call('author.get', { id })
+        },
+        authors (_, { offset, take }, { call }) {
+          console.log('author list (component)', { offset, take })
+          return this._broker.call('author.list', { offset, take })
         }
       },
       Mutation: {
-        author(_, { name }, { call }) {
-          return this._broker.call('author.mutate', { name });
+        createAuthor (_, { id, name }, { call }) {
+          return this._broker.call('author.create', { id, name })
+        },
+        updateAuthor (_, { id, name }, { call }) {
+          return this._broker.call('author.update', { id, name })
         }
       }
-    };
+    }
 
-    super({ types, resolvers });
+    super({ types, resolvers })
 
-    this._broker = broker;
+    this._broker = broker
   }
 }
 
-module.exports = AuthorComponent;
+module.exports = AuthorComponent
