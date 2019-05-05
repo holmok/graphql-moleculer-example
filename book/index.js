@@ -9,7 +9,7 @@ const broker = new ServiceBroker({
   cacher: 'memory'
 })
 
-const store = new Store()
+const store = new Store('/data')
 
 broker.createService({
   name: 'book',

@@ -13,7 +13,7 @@ const books = [
   }
 ]
 
-const store = new Store()
+const store = new Store('/data')
 if (!store.existsBucket('books')) {
   store.createBucket('books', books[0])
 }

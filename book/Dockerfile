@@ -1,11 +1,14 @@
 FROM node:current
 
 WORKDIR /app
-ADD . .
 
-ENV NODE_ENV=production
-
+COPY package.json .
 RUN npm install
-RUN node salt.js
+
+COPY salt.js .
+RUN mkdir /data
+RUN node ./salt.js
+
+ADD . .
 
 CMD ["node", "index.js"]

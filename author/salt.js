@@ -11,7 +11,8 @@ const authors = [
   }
 ]
 
-const store = new Store()
+const store = new Store('/data')
+
 if (!store.existsBucket('authors')) {
   store.createBucket('authors', authors[0])
 }
