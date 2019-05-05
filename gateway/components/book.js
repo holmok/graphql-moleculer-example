@@ -27,7 +27,7 @@ class BookComponent extends GraphQLComponent {
         books(offset: Int, take: Int) : Books
       }
       type Mutation {
-        # Create a new author.
+        # Create a new author (leaving out id will auto create one).
         createBook(id: ID, name: String!, author_id: ID!) : Book
         # Update existing author
         updateBook(id: ID!, name: String!, author_id: ID!) : Book

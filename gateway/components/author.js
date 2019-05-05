@@ -21,7 +21,7 @@ class AuthorComponent extends GraphQLComponent {
         authors(offset: Int, take: Int) : Authors
       }
       type Mutation {
-        # Create a new author.
+        # Create a new author (leaving out id will auto create one).
         createAuthor(id: ID, name: String!) : Author
         # Update existing author
         updateAuthor(id: ID!, name: String!) : Author
