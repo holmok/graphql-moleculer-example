@@ -13,15 +13,18 @@
   "license": "ISC",
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
+    "apollo-boost": "^0.3.1",
     "apollo-server-express": "^2.4.8",
     "express": "^4.16.4",
     "graphql": "^0.13.2",
     "graphql-component": "0.0.1-alpha.19",
+    "graphql-tag": "^2.10.1",
     "isomorphic-unfetch": "^3.0.0",
     "moleculer": "^0.13.9",
     "nats": "^1.2.10",
     "next": "^8.1.0",
     "react": "^16.8.6",
+    "react-apollo": "^2.5.5",
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
