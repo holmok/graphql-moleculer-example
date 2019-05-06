@@ -1,16 +1,12 @@
 import Header from './Header'
+import './normalize.css'
+import './skeleton.css'
 
-const layoutStyle = {
-  margin: 20,
-  padding: 20,
-  border: '1px solid #DDD'
-}
-const withLayout = Page => {
-  return () => (
-    <div style={layoutStyle}>
-      <Header />
-      <Page />
-    </div>
-  )
-}
-export default withLayout
+const Layout = props => (
+  <div className='container'>
+    <Header />
+    {props.children}
+  </div>
+)
+
+export default Layout

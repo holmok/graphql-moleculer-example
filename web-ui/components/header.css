@@ -1,0 +1,21 @@
+ul.header-nav{
+  background-color: #000;
+  height: 2em;
+  line-height: 2em;
+}
+
+ul.header-nav li{
+  display: block;
+  float: left;
+  margin-left: 1em;
+}
+
+ul.header-nav li a{
+  display: block;
+  color: #fff;
+  padding: 0 1em;
+}
+
+ul.header-nav li a:hover{
+background-color: #333;
+}

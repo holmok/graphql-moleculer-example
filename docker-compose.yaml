@@ -8,10 +8,10 @@ services:
         ports:
             - "8222:8222"
         hostname: nats-server
-    gateway:
-        build: ./gateway
+    web-ui:
+        build: ./web-ui
         ports:
-            - "4000:4000"
+            - "3000:3000"
         links: 
             - nats:nats-server
         environment:
